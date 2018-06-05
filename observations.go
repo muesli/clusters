@@ -68,5 +68,8 @@ func AverageDistance(o Observation, observations Observations) float64 {
 		d += dist
 	}
 
+	if l == 0 {
+		return 0
+	}
 	return d / float64(l)
 }
