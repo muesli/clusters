@@ -56,9 +56,17 @@ func (c Observations) Center() (Coordinates, error) {
 // AverageDistance returns the average distance between o and all observations
 func AverageDistance(o Observation, observations Observations) float64 {
 	var d float64
+	var l int
+
 	for _, observation := range observations {
-		d += o.Distance(observation.Coordinates())
+		dist := o.Distance(observation.Coordinates())
+		if dist == 0 {
+			continue
+		}
+
+		l++
+		d += dist
 	}
 
-	return d / float64(len(observations))
+	return d / float64(l)
 }
