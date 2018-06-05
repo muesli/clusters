@@ -41,6 +41,11 @@ func TestAverageDistance(t *testing.T) {
 	if d != 12.5 {
 		t.Errorf("Expected average distance of 12.5, got %v", d)
 	}
+
+	d = AverageDistance(o[1], Observations{o[1]})
+	if d != 0 {
+		t.Errorf("Expected average distance of 0, got %v", d)
+	}
 }
 
 func TestClusters(t *testing.T) {
